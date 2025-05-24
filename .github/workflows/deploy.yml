@@ -23,6 +23,23 @@ jobs:
       - name: Deploy with Serverless
         run: npx serverless deploy
         env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
+          SERVERLESS_DEBUG: 'true'
+          SERVERLESS_VERBOSE: 'true'
+          SERVERLESS_LOG_LEVEL: 'debug'
+          SERVERLESS_DISABLE_CACHE: 'true'
+          SERVERLESS_DISABLE_TELEMETRY: 'true'
+          AWS_SDK_LOAD_CONFIG: 'true'
+          AWS_SHARED_CREDENTIALS_FILE: ${{ github.workspace }}/.aws/credentials
+          AWS_CONFIG_FILE: ${{ github.workspace }}/.aws/config
+          SERVERLESS_EXCLUDE_DEV_DEPENDENCIES: 'true'
+          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+          SERVERLESS_API_KEY: ${{ secrets.SERVERLESS_API_KEY }}
+          SERVERLESS_APP_NAME: 'lambda-function-datadog'
+          SERVERLESS_STAGE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' ? 'prod' : 'dev' }}
+          SERVERLESS_REGION: 'us-east-1'
+          SERVERLESS_SERVICE_NAME: 'lambda-function-datadog'
+          AWS_REGION: 'us-east-1'
+          AWS_DEFAULT_REGION: 'us-east-1'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          DD_API_KEY: ${{ secrets.DD_API_KEY }}
