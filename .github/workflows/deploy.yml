@@ -27,7 +27,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           DD_API_KEY: ${{ secrets.DD_API_KEY }}
           DD_APP_KEY: ${{ secrets.DD_APP_KEY }}
-          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
           NODE_OPTIONS: '--max-old-space-size=4096'
           AWS_REGION: 'us-east-1'
           AWS_DEFAULT_REGION: 'us-east-1'
@@ -37,6 +36,5 @@ jobs:
           SERVERLESS_DISABLE_CACHE: 'true'
           SERVERLESS_DISABLE_TELEMETRY: 'true'
           SERVERLESS_SERVICE_NAME: 'lambda-function-datadog'
-          SERVERLESS_STAGE: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && 'prod' || 'dev' }}
-          SERVERLESS_REGION: 'us-east-1'
+          SERVERLESS_STAGE: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
           SERVERLESS_API_KEY: ${{ secrets.SERVERLESS_API_KEY }}
