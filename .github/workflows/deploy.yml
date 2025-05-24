@@ -23,21 +23,20 @@ jobs:
       - name: Deploy with Serverless
         run: npx serverless deploy
         env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          DD_API_KEY: ${{ secrets.DD_API_KEY }}
+          DD_APP_KEY: ${{ secrets.DD_APP_KEY }}
+          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
           NODE_OPTIONS: '--max-old-space-size=4096'
+          AWS_REGION: 'us-east-1'
+          AWS_DEFAULT_REGION: 'us-east-1'
           SERVERLESS_DEBUG: 'true'
           SERVERLESS_VERBOSE: 'true'
           SERVERLESS_LOG_LEVEL: 'debug'
           SERVERLESS_DISABLE_CACHE: 'true'
           SERVERLESS_DISABLE_TELEMETRY: 'true'
-          AWS_SDK_LOAD_CONFIG: 'true'
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'us-east-1'
-          AWS_DEFAULT_REGION: 'us-east-1'
-          SERVERLESS_API_KEY: ${{ secrets.SERVERLESS_API_KEY }}
-          SERVERLESS_APP_NAME: 'lambda-function-datadog'
+          SERVERLESS_SERVICE_NAME: 'lambda-function-datadog'
           SERVERLESS_STAGE: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && 'prod' || 'dev' }}
           SERVERLESS_REGION: 'us-east-1'
-          SERVERLESS_SERVICE_NAME: 'lambda-function-datadog'
-          DD_API_KEY: ${{ secrets.DD_API_KEY }}  # Se você estiver usando a API do Datadog
-          DD_APP_KEY: ${{ secrets.DD_APP_KEY }}  # Se você estiver usando a chave de app do Datadog
+          SERVERLESS_API_KEY: ${{ secrets.SERVERLESS_API_KEY }}
