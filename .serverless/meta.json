@@ -1,0 +1,72 @@
+{
+  "unknown": {
+    "versionFramework": "4.14.4",
+    "command": [],
+    "options": {},
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  },
+  "C:\\Users\\Erick\\IdeaProjects\\lambda-function-datadog\\serverless.yml": {
+    "versionFramework": "4.14.4",
+    "servicePath": "C:\\Users\\Erick\\IdeaProjects\\lambda-function-datadog\\serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "lambda-function-datadog",
+      "provider": {
+        "name": "aws",
+        "runtime": "python3.8",
+        "stage": "dev",
+        "region": "us-east-1"
+      },
+      "functions": {
+        "lambdaFunction": {
+          "handler": "lambda_function.lambda_handler",
+          "environment": {
+            "DD_API_KEY": "<REDACTED>",
+            "DD_APP_KEY": "${env:DD_APP_KEY}"
+          }
+        }
+      },
+      "plugins": [
+        "serverless-plugin-datadog"
+      ]
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "python3.8",
+      "stage": "dev",
+      "region": "us-east-1"
+    },
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "error": {
+      "message": "Cannot resolve '${env:DD_API_KEY}' variable at 'functions.lambdaFunction.environment.DD_API_KEY'. No value is available for this variable, and no default value was provided. Please check your variable definitions or provide a default value.",
+      "stack": "Error: Cannot resolve '${env:DD_API_KEY}' variable at 'functions.lambdaFunction.environment.DD_API_KEY'. No value is available for this variable, and no default value was provided. Please check your variable definitions or provide a default value.\n    at _ResolverManager.resolve (file:///C:/Users/Erick/.serverless/releases/4.14.4/package/dist/sf-core.js:695:31882)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async #handlePlaceholderNode (file:///C:/Users/Erick/.serverless/releases/4.14.4/package/dist/sf-core.js:695:30089)\n    at async file:///C:/Users/Erick/.serverless/releases/4.14.4/package/dist/sf-core.js:695:27961\n    at async processNodeAndHandleCompletion (file:///C:/Users/Erick/.serverless/releases/4.14.4/package/dist/sf-core.js:695:16742)",
+      "code": "MISSING_VARIABLE_RESULT"
+    },
+    "serviceRawFile": "service: lambda-function-datadog\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: python3.8\r\n  stage: dev\r\n  region: us-east-1\r\n\r\nfunctions:\r\n  lambdaFunction:\r\n    handler: lambda_function.lambda_handler\r\n    environment:\r\n      DD_API_KEY: ${env:DD_API_KEY}\r\n      DD_APP_KEY: ${env:DD_APP_KEY}\r\n\r\nplugins:\r\n  - serverless-plugin-datadog\r\n",
+    "command": [
+      "deploy"
+    ],
+    "options": {},
+    "orgId": "100ec722-5d6d-42fe-b052-83aee0e08d45",
+    "orgName": "myteste",
+    "userId": "bfZlWQ8nJnVWTtKfmM",
+    "userName": "myteste",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
